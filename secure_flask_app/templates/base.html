@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Práctica C3 - App segura</title>
+</head>
+<body>
+  <header>
+    <h1>Práctica C3 — Desarrollo de software seguro (Ejemplo)</h1>
+    <nav><a href="{{ url_for('index') }}">Inicio</a> | <a href="{{ url_for('add_user') }}">Agregar usuario</a></nav>
+    <hr>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li><strong>{{ category }}</strong>: {{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <hr><small>Aplicación de ejemplo — no usar en producción sin revisiones adicionales.</small>
+  </footer>
+</body>
+</html>
